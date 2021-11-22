@@ -44,8 +44,11 @@ function LFM_SmartCropIMG($file, $options = [])
     return $smartcrop->crop($res['topCrop']['x'], $res['topCrop']['y'], $res['topCrop']['width'], $res['topCrop']['height']);
 }
 
-function LFM_SaveCompressImage($prepare_src = false, $file, $destination, $extension = 'jpg', $quality = 90)
+function LFM_SaveCompressImage($prepare_src , $file, $destination, $extension = 'jpg', $quality = 90)
 {
+    if(!isset($prepare_src)){
+        $prepare_src = false;
+    }
     $res = false;
     if ($prepare_src)
     {
@@ -1127,8 +1130,11 @@ function LFM_GetDecodeId($id, $route = false)
 
 }
 
-function LFM_uploadFile($file, $CustomUid = false, $CategoryID, $FileMimeType, $original_name)
+function LFM_uploadFile($file, $CustomUid, $CategoryID, $FileMimeType, $original_name)
 {
+    if(!isset($CustomUid)){
+        $CustomUid = false;
+    }
     \ArtinCMS\LFM\Helpers\Classes\Media::upload($file, $CustomUid = false, $CategoryID, $FileMimeType, $original_name);
 }
 
